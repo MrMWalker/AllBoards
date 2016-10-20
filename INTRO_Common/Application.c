@@ -186,6 +186,10 @@ void APP_Start(void) {
   /* does usually not return! */
 #else
   //EVNT_SetEvent(EVNT_STARTUP);
+
+#if PL_CONFIG_HAS_TRIGGER
+
+#endif
   for(;;) {
 #if PL_CONFIG_HAS_KEYS
     KEY_Scan();

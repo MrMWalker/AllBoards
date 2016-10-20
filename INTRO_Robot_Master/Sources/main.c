@@ -76,6 +76,7 @@ int main(void)
 
   /* Write your code here */
   /* For example: for(;;) { } */
+
   APP_Start();
 #if 0
   Bit1_ClrVal();
