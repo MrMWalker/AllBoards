@@ -14,6 +14,7 @@
 #include "CS1.h"
 #include "Keys.h"
 #include "KIN1.h"
+#include "KeyDebounce.h"
 #if PL_CONFIG_HAS_SHELL
   #include "CLS1.h"
 #endif
@@ -60,7 +61,6 @@ void APP_EventHandler(EVNT_Handle event) {
   case EVNT_SW1_PRESSED:
     LED1_Neg();
     //CLS1_SendStr("SW1 pressed\r\n", CLS1_GetStdio()->stdOut);
-    SHELL_SendString("SW1 pressed\r\n");
     #if PL_CONFIG_HAS_BUZZER
     BUZ_PlayTune(BUZ_TUNE_BUTTON);
     #endif
@@ -183,15 +183,17 @@ void APP_Start(void) {
 #if PL_CONFIG_HAS_RTOS
   vTaskStartScheduler(); /* start the RTOS, create the IDLE task and run my tasks (if any) */
   /* does usually not return! */
-#else
-  //EVNT_SetEvent(EVNT_STARTUP);
 
 #if PL_CONFIG_HAS_TRIGGER
 
 #endif
   for(;;) {
 #if PL_CONFIG_HAS_KEYS
+	#if PL_CONFIG_HAS_DEBOUNCE
+	  KEYDBNC_Process();
+	#else
     KEY_Scan();
+	#endif
 #endif
 #if PL_CONFIG_HAS_EVENTS
     EVNT_HandleEvent(APP_EventHandler, TRUE);
@@ -204,7 +206,7 @@ void APP_Start(void) {
     //LED1_Off();
     //LED2_Off();
     //WAIT1_Waitms(25); /* just wait for some arbitrary time .... */
-    //CLS1_SendStr((uint8_t*)"hello world!\r\n", CLS1_GetStdio()->stdOut);
+    CLS1_SendStr((uint8_t*)"hello world!\r\n", CLS1_GetStdio()->stdOut);
   }
 #endif
 }

@@ -12,6 +12,7 @@
 #include "Event.h"
 #include "Keys.h"
 #include "Application.h"
+#include "Shell.h"
 
 static void AppTask(void* param) {
   const int *whichLED = (int*)param;
@@ -20,11 +21,12 @@ static void AppTask(void* param) {
   for(;;) {
     if (*whichLED==1) {
     	LED1_Neg();
+    	CLS1_SendStr("Blink LED 1\r\n", CLS1_GetStdio()->stdOut);
     	FRTOS1_vTaskDelay(pdMS_TO_TICKS(500));
     } else if (*whichLED==2) {
     	FRTOS1_vTaskDelay(pdMS_TO_TICKS(500));
     	LED2_Neg();
-
+    	//CLS1_SendStr("Blink LED 2\r\n", CLS1_GetStdio()->stdOut);
     }
     /* \todo handle your application code here */
   }
