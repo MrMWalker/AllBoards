@@ -11,6 +11,7 @@
 #include "Shell.h"
 #include "CLS1.h"
 #include "Application.h"
+#include "LED.h"
 #if PL_CONFIG_HAS_RTOS
   #include "FRTOS1.h"
 #endif
@@ -83,6 +84,7 @@ static const CLS1_ParseCommandCallback CmdParserTable[] =
 {
   CLS1_ParseCommand, /* Processor Expert Shell component, is first in list */
   SHELL_ParseCommand, /* our own module parser */
+  LED_ParseCommand,
 #if FRTOS1_PARSE_COMMAND_ENABLED
   FRTOS1_ParseCommand, /* FreeRTOS shell parser */
 #endif

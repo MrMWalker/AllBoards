@@ -87,6 +87,19 @@
   #define LED3_Close()    /* NYI */
 #endif
 
+#if PL_CONFIG_HAS_SHELL
+  #include "CLS1.h"
+
+/*!
+ * \brief Shell parser routine.
+ * \param cmd Pointer to command line string.
+ * \param handled Pointer to status if command has been handled. Set to TRUE if command was understood.
+ * \param io Pointer to stdio handle
+ * \return Error code, ERR_OK if everything was ok.
+ */
+  uint8_t LED_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_StdIOType *io);
+#endif
+
 void LED_Init(void); /* driver initialization */
 void LED_Deinit(void); /* driver deinitialization */
 #endif /* PL_CONFIG_HAS_LEDS */

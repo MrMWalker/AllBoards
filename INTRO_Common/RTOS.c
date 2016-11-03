@@ -21,13 +21,13 @@ static void AppTask(void* param) {
   for(;;) {
     if (*whichLED==1) {
 
-    	LED1_Neg();
+    	//LED1_Neg();
     	FRTOS1_vTaskDelay(pdMS_TO_TICKS(500));
 
     } else if (*whichLED==2) {
 
     	FRTOS1_vTaskDelay(pdMS_TO_TICKS(500));
-    	LED2_Neg();
+    //	LED2_Neg();
     }
     /* \todo handle your application code here */
   }
@@ -41,10 +41,10 @@ void RTOS_Init(void) {
 
   EVNT_SetEvent(EVNT_STARTUP); /* set startup event */
   /*! \todo Create tasks here */
-  if (FRTOS1_xTaskCreate(AppTask, (signed portCHAR *)"App1", configMINIMAL_STACK_SIZE, (void*)&led1, tskIDLE_PRIORITY + 0, NULL) != pdPASS) {
+  if (FRTOS1_xTaskCreate(AppTask, (signed portCHAR *)"App1", configMINIMAL_STACK_SIZE, (void*)&led1, tskIDLE_PRIORITY + 2, NULL) != pdPASS) {
     for(;;){}/* error case only, stay here! */
   }
-  if (FRTOS1_xTaskCreate(AppTask, (signed portCHAR *)"App2", configMINIMAL_STACK_SIZE, (void*)&led2, tskIDLE_PRIORITY + 1, NULL) != pdPASS) {
+  if (FRTOS1_xTaskCreate(AppTask, (signed portCHAR *)"App2", configMINIMAL_STACK_SIZE, (void*)&led2, tskIDLE_PRIORITY + 2, NULL) != pdPASS) {
 	  for(;;){}
   }
 }
