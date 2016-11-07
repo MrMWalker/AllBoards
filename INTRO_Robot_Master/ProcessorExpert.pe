@@ -3,7 +3,7 @@
   <Header>
     <Name>INTRO_Robot_Master</Name>
     <SavedBy>Erich Styger</SavedBy>
-    <ModificationStamp>108</ModificationStamp>
+    <ModificationStamp>113</ModificationStamp>
     <Date>2016-02-29</Date>
     <IDE>Eclipse IDE</IDE>
     <PEversion>1.12.2.RT7_b1550-0615</PEversion>
@@ -29,7 +29,7 @@
     <UseExistingModules>true</UseExistingModules>
     <RenamePeripheries>false</RenamePeripheries>
     <Autodependency>true</Autodependency>
-    <ProjectCompNumb>342</ProjectCompNumb>
+    <ProjectCompNumb>349</ProjectCompNumb>
     <DelUnusedPreviouslyGenFiles>true</DelUnusedPreviouslyGenFiles>
     <GeneratedCodeFrozen>false</GeneratedCodeFrozen>
     <AssignInitComponentNameToPrph>true</AssignInitComponentNameToPrph>
@@ -79,6 +79,13 @@
     <UserFolderName />
     <NodeName>SW</NodeName>
     <CompNumb>265</CompNumb>
+    <FolderType>Beans</FolderType>
+    <ExpandedAll>true</ExpandedAll>
+  </UserFolder>
+  <UserFolder>
+    <UserFolderName />
+    <NodeName>Referenced_Components</NodeName>
+    <CompNumb>348</CompNumb>
     <FolderType>Beans</FolderType>
     <ExpandedAll>true</ExpandedAll>
   </UserFolder>
@@ -10272,7 +10279,7 @@
       <Count>0</Count>
     </BoolList_FpgaConfig>
     <BoolList_BeanConfig>
-      <Count>48</Count>
+      <Count>49</Count>
       <ItemId0>5</ItemId0>
       <Value0>true</Value0>
       <ItemId1>7</ItemId1>
@@ -10366,9 +10373,11 @@
       <ItemId45>260</ItemId45>
       <Value45>true</Value45>
       <ItemId46>270</ItemId46>
-      <Value46>false</Value46>
+      <Value46>true</Value46>
       <ItemId47>276</ItemId47>
-      <Value47>false</Value47>
+      <Value47>true</Value47>
+      <ItemId48>347</ItemId48>
+      <Value48>false</Value48>
     </BoolList_BeanConfig>
     <BoolList_TaskConfig>
       <Count>0</Count>
@@ -10443,7 +10452,7 @@
       <Count>0</Count>
     </BoolList_FpgaConfig>
     <BoolList_BeanConfig>
-      <Count>48</Count>
+      <Count>49</Count>
       <ItemId0>5</ItemId0>
       <Value0>true</Value0>
       <ItemId1>7</ItemId1>
@@ -10540,6 +10549,8 @@
       <Value46>false</Value46>
       <ItemId47>276</ItemId47>
       <Value47>false</Value47>
+      <ItemId48>347</ItemId48>
+      <Value48>true</Value48>
     </BoolList_BeanConfig>
     <BoolList_TaskConfig>
       <Count>0</Count>
@@ -54045,7 +54056,7 @@
     <BeanType>FSL_USB_Stack</BeanType>
     <Name>USB1</Name>
     <CompNumb>270</CompNumb>
-    <CompEnabled>false</CompEnabled>
+    <CompEnabled>true</CompEnabled>
     <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
     <IconName>FSL_USB_Stack</IconName>
     <UserFolderName />
@@ -54124,8 +54135,8 @@
               <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <Index>18</Index>
-              <EnumSymbVal>Kinetis K24FN120</EnumSymbVal>
+              <Index>16</Index>
+              <EnumSymbVal>Kinetis K22F120</EnumSymbVal>
             </ItemState>
             <ItemState>
               <ItemSymbol>USBCDCenabled</ItemSymbol>
@@ -54165,7 +54176,7 @@
               <ItemSymbol>CdcMfgNameString</ItemSymbol>
               <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
-              <Value>Intro Robo</Value>
+              <Value>My Company</Value>
             </ItemState>
             <ItemState>
               <ItemSymbol>CdcDescriptionString</ItemSymbol>
@@ -54202,7 +54213,7 @@
               <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <Value>0</Value>
+              <Value>2</Value>
               <Base>DEC</Base>
             </ItemState>
             <ItemState>
@@ -54291,7 +54302,7 @@
                     <ReadOnly>false</ReadOnly>
                     <UserReadOnly>false</UserReadOnly>
                     <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-                    <Value>256</Value>
+                    <Value>64</Value>
                     <ItemWasNeverEnabledInChgScript>true</ItemWasNeverEnabledInChgScript>
                     <Base>DEC</Base>
                   </ItemState>
@@ -54315,7 +54326,7 @@
                     <Index>0</Index>
                     <Value>true</Value>
                     <LastSelection>true</LastSelection>
-                    <LastUserSel>yes</LastUserSel>
+                    <LastUserSel>always</LastUserSel>
                     <UsrMethodName>Clear</UsrMethodName>
                   </ItemState>
                   <ItemState>
@@ -54327,7 +54338,7 @@
                     <Index>0</Index>
                     <Value>true</Value>
                     <LastSelection>true</LastSelection>
-                    <LastUserSel>yes</LastUserSel>
+                    <LastUserSel>always</LastUserSel>
                     <UsrMethodName>Put</UsrMethodName>
                   </ItemState>
                   <ItemState>
@@ -54351,7 +54362,7 @@
                     <Index>0</Index>
                     <Value>true</Value>
                     <LastSelection>true</LastSelection>
-                    <LastUserSel>yes</LastUserSel>
+                    <LastUserSel>always</LastUserSel>
                     <UsrMethodName>Get</UsrMethodName>
                   </ItemState>
                   <ItemState>
@@ -54363,7 +54374,7 @@
                     <Index>0</Index>
                     <Value>true</Value>
                     <LastSelection>true</LastSelection>
-                    <LastUserSel>yes</LastUserSel>
+                    <LastUserSel>always</LastUserSel>
                     <UsrMethodName>Peek</UsrMethodName>
                   </ItemState>
                   <ItemState>
@@ -54399,7 +54410,7 @@
                     <Index>0</Index>
                     <Value>true</Value>
                     <LastSelection>true</LastSelection>
-                    <LastUserSel>yes</LastUserSel>
+                    <LastUserSel>always</LastUserSel>
                     <UsrMethodName>NofElements</UsrMethodName>
                   </ItemState>
                   <ItemState>
@@ -54411,7 +54422,7 @@
                     <Index>0</Index>
                     <Value>true</Value>
                     <LastSelection>true</LastSelection>
-                    <LastUserSel>yes</LastUserSel>
+                    <LastUserSel>always</LastUserSel>
                     <UsrMethodName>NofFreeElements</UsrMethodName>
                   </ItemState>
                   <ItemState>
@@ -54423,7 +54434,7 @@
                     <Index>0</Index>
                     <Value>true</Value>
                     <LastSelection>true</LastSelection>
-                    <LastUserSel>yes</LastUserSel>
+                    <LastUserSel>always</LastUserSel>
                     <UsrMethodName>Deinit</UsrMethodName>
                   </ItemState>
                   <ItemState>
@@ -54435,7 +54446,7 @@
                     <Index>0</Index>
                     <Value>true</Value>
                     <LastSelection>true</LastSelection>
-                    <LastUserSel>yes</LastUserSel>
+                    <LastUserSel>always</LastUserSel>
                     <UsrMethodName>Init</UsrMethodName>
                   </ItemState>
                 </Methods>
@@ -54456,7 +54467,7 @@
                     <Value>false</Value>
                     <Expanded>false</Expanded>
                     <LastSelection>false</LastSelection>
-                    <LastUserSel>no</LastUserSel>
+                    <LastUserSel>never</LastUserSel>
                   </ItemState>
                   <ItemState>
                     <ItemSymbol>OnBufferFullName</ItemSymbol>
@@ -54474,7 +54485,7 @@
                     <Value>false</Value>
                     <Expanded>false</Expanded>
                     <LastSelection>false</LastSelection>
-                    <LastUserSel>no</LastUserSel>
+                    <LastUserSel>never</LastUserSel>
                   </ItemState>
                   <ItemState>
                     <ItemSymbol>OnBufferEmptyName</ItemSymbol>
@@ -54492,7 +54503,7 @@
                     <Value>false</Value>
                     <Expanded>false</Expanded>
                     <LastSelection>false</LastSelection>
-                    <LastUserSel>no</LastUserSel>
+                    <LastUserSel>never</LastUserSel>
                   </ItemState>
                   <ItemState>
                     <ItemSymbol>OnItemPutName</ItemSymbol>
@@ -54510,7 +54521,7 @@
                     <Value>false</Value>
                     <Expanded>false</Expanded>
                     <LastSelection>false</LastSelection>
-                    <LastUserSel>no</LastUserSel>
+                    <LastUserSel>never</LastUserSel>
                   </ItemState>
                   <ItemState>
                     <ItemSymbol>OnItemGetName</ItemSymbol>
@@ -54528,7 +54539,7 @@
                     <Value>false</Value>
                     <Expanded>false</Expanded>
                     <LastSelection>false</LastSelection>
-                    <LastUserSel>no</LastUserSel>
+                    <LastUserSel>never</LastUserSel>
                   </ItemState>
                   <ItemState>
                     <ItemSymbol>OnClearName</ItemSymbol>
@@ -54596,7 +54607,7 @@
                     <ReadOnly>false</ReadOnly>
                     <UserReadOnly>false</UserReadOnly>
                     <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-                    <Value>128</Value>
+                    <Value>64</Value>
                     <ItemWasNeverEnabledInChgScript>true</ItemWasNeverEnabledInChgScript>
                     <Base>DEC</Base>
                   </ItemState>
@@ -54620,7 +54631,7 @@
                     <Index>0</Index>
                     <Value>true</Value>
                     <LastSelection>true</LastSelection>
-                    <LastUserSel>yes</LastUserSel>
+                    <LastUserSel>always</LastUserSel>
                     <UsrMethodName>Clear</UsrMethodName>
                   </ItemState>
                   <ItemState>
@@ -54632,7 +54643,7 @@
                     <Index>0</Index>
                     <Value>true</Value>
                     <LastSelection>true</LastSelection>
-                    <LastUserSel>yes</LastUserSel>
+                    <LastUserSel>always</LastUserSel>
                     <UsrMethodName>Put</UsrMethodName>
                   </ItemState>
                   <ItemState>
@@ -54656,7 +54667,7 @@
                     <Index>0</Index>
                     <Value>true</Value>
                     <LastSelection>true</LastSelection>
-                    <LastUserSel>yes</LastUserSel>
+                    <LastUserSel>always</LastUserSel>
                     <UsrMethodName>Get</UsrMethodName>
                   </ItemState>
                   <ItemState>
@@ -54668,7 +54679,7 @@
                     <Index>0</Index>
                     <Value>true</Value>
                     <LastSelection>true</LastSelection>
-                    <LastUserSel>yes</LastUserSel>
+                    <LastUserSel>always</LastUserSel>
                     <UsrMethodName>Peek</UsrMethodName>
                   </ItemState>
                   <ItemState>
@@ -54704,7 +54715,7 @@
                     <Index>0</Index>
                     <Value>true</Value>
                     <LastSelection>true</LastSelection>
-                    <LastUserSel>yes</LastUserSel>
+                    <LastUserSel>always</LastUserSel>
                     <UsrMethodName>NofElements</UsrMethodName>
                   </ItemState>
                   <ItemState>
@@ -54716,7 +54727,7 @@
                     <Index>0</Index>
                     <Value>true</Value>
                     <LastSelection>true</LastSelection>
-                    <LastUserSel>yes</LastUserSel>
+                    <LastUserSel>always</LastUserSel>
                     <UsrMethodName>NofFreeElements</UsrMethodName>
                   </ItemState>
                   <ItemState>
@@ -54728,7 +54739,7 @@
                     <Index>0</Index>
                     <Value>true</Value>
                     <LastSelection>true</LastSelection>
-                    <LastUserSel>yes</LastUserSel>
+                    <LastUserSel>always</LastUserSel>
                     <UsrMethodName>Deinit</UsrMethodName>
                   </ItemState>
                   <ItemState>
@@ -54740,7 +54751,7 @@
                     <Index>0</Index>
                     <Value>true</Value>
                     <LastSelection>true</LastSelection>
-                    <LastUserSel>yes</LastUserSel>
+                    <LastUserSel>always</LastUserSel>
                     <UsrMethodName>Init</UsrMethodName>
                   </ItemState>
                 </Methods>
@@ -54761,7 +54772,7 @@
                     <Value>false</Value>
                     <Expanded>false</Expanded>
                     <LastSelection>false</LastSelection>
-                    <LastUserSel>no</LastUserSel>
+                    <LastUserSel>never</LastUserSel>
                   </ItemState>
                   <ItemState>
                     <ItemSymbol>OnBufferFullName</ItemSymbol>
@@ -54779,7 +54790,7 @@
                     <Value>false</Value>
                     <Expanded>false</Expanded>
                     <LastSelection>false</LastSelection>
-                    <LastUserSel>no</LastUserSel>
+                    <LastUserSel>never</LastUserSel>
                   </ItemState>
                   <ItemState>
                     <ItemSymbol>OnBufferEmptyName</ItemSymbol>
@@ -54797,7 +54808,7 @@
                     <Value>false</Value>
                     <Expanded>false</Expanded>
                     <LastSelection>false</LastSelection>
-                    <LastUserSel>no</LastUserSel>
+                    <LastUserSel>never</LastUserSel>
                   </ItemState>
                   <ItemState>
                     <ItemSymbol>OnItemPutName</ItemSymbol>
@@ -54815,7 +54826,7 @@
                     <Value>false</Value>
                     <Expanded>false</Expanded>
                     <LastSelection>false</LastSelection>
-                    <LastUserSel>no</LastUserSel>
+                    <LastUserSel>never</LastUserSel>
                   </ItemState>
                   <ItemState>
                     <ItemSymbol>OnItemGetName</ItemSymbol>
@@ -54833,7 +54844,7 @@
                     <Value>false</Value>
                     <Expanded>false</Expanded>
                     <LastSelection>false</LastSelection>
-                    <LastUserSel>no</LastUserSel>
+                    <LastUserSel>never</LastUserSel>
                   </ItemState>
                   <ItemState>
                     <ItemSymbol>OnClearName</ItemSymbol>
@@ -54870,7 +54881,7 @@
               <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <Value>10</Value>
+              <Value>50</Value>
               <Base>DEC</Base>
             </ItemState>
             <ItemState>
@@ -54878,7 +54889,7 @@
               <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <Value>2</Value>
+              <Value>5</Value>
               <Base>DEC</Base>
             </ItemState>
             <ItemState>
@@ -54926,7 +54937,7 @@
               <Index>0</Index>
               <Value>true</Value>
               <LastSelection>true</LastSelection>
-              <LastUserSel>yes</LastUserSel>
+              <LastUserSel>always</LastUserSel>
               <UsrMethodName>ClearRxBuffer</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -54937,7 +54948,7 @@
               <Index>0</Index>
               <Value>true</Value>
               <LastSelection>true</LastSelection>
-              <LastUserSel>yes</LastUserSel>
+              <LastUserSel>always</LastUserSel>
               <UsrMethodName>ClearTxBuffer</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -54948,7 +54959,7 @@
               <Index>0</Index>
               <Value>true</Value>
               <LastSelection>true</LastSelection>
-              <LastUserSel>yes</LastUserSel>
+              <LastUserSel>always</LastUserSel>
               <UsrMethodName>GetFreeInTxBuf</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -54959,7 +54970,7 @@
               <Index>0</Index>
               <Value>true</Value>
               <LastSelection>true</LastSelection>
-              <LastUserSel>yes</LastUserSel>
+              <LastUserSel>always</LastUserSel>
               <UsrMethodName>GetCharsInTxBuf</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -54970,7 +54981,7 @@
               <Index>0</Index>
               <Value>true</Value>
               <LastSelection>true</LastSelection>
-              <LastUserSel>yes</LastUserSel>
+              <LastUserSel>always</LastUserSel>
               <UsrMethodName>GetCharsInRxBuf</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -54981,7 +54992,7 @@
               <Index>0</Index>
               <Value>true</Value>
               <LastSelection>true</LastSelection>
-              <LastUserSel>yes</LastUserSel>
+              <LastUserSel>always</LastUserSel>
               <UsrMethodName>GetChar</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -54992,7 +55003,7 @@
               <Index>0</Index>
               <Value>true</Value>
               <LastSelection>true</LastSelection>
-              <LastUserSel>yes</LastUserSel>
+              <LastUserSel>always</LastUserSel>
               <UsrMethodName>RecvChar</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -55003,7 +55014,7 @@
               <Index>0</Index>
               <Value>true</Value>
               <LastSelection>true</LastSelection>
-              <LastUserSel>yes</LastUserSel>
+              <LastUserSel>always</LastUserSel>
               <UsrMethodName>SendChar</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -55014,7 +55025,7 @@
               <Index>0</Index>
               <Value>true</Value>
               <LastSelection>true</LastSelection>
-              <LastUserSel>yes</LastUserSel>
+              <LastUserSel>always</LastUserSel>
               <UsrMethodName>SendString</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -55025,7 +55036,7 @@
               <Index>0</Index>
               <Value>true</Value>
               <LastSelection>true</LastSelection>
-              <LastUserSel>yes</LastUserSel>
+              <LastUserSel>always</LastUserSel>
               <UsrMethodName>SendBlock</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -55036,7 +55047,7 @@
               <Index>0</Index>
               <Value>true</Value>
               <LastSelection>true</LastSelection>
-              <LastUserSel>yes</LastUserSel>
+              <LastUserSel>always</LastUserSel>
               <UsrMethodName>PutBufferChecked</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -55047,7 +55058,7 @@
               <Index>0</Index>
               <Value>true</Value>
               <LastSelection>true</LastSelection>
-              <LastUserSel>yes</LastUserSel>
+              <LastUserSel>always</LastUserSel>
               <UsrMethodName>App_Callback</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -55058,7 +55069,7 @@
               <Index>0</Index>
               <Value>true</Value>
               <LastSelection>true</LastSelection>
-              <LastUserSel>yes</LastUserSel>
+              <LastUserSel>always</LastUserSel>
               <UsrMethodName>Notify_Callback</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -55091,7 +55102,7 @@
               <Index>0</Index>
               <Value>true</Value>
               <LastSelection>true</LastSelection>
-              <LastUserSel>yes</LastUserSel>
+              <LastUserSel>always</LastUserSel>
               <UsrMethodName>App_Task</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -55135,7 +55146,7 @@
               <Index>0</Index>
               <Value>true</Value>
               <LastSelection>true</LastSelection>
-              <LastUserSel>yes</LastUserSel>
+              <LastUserSel>always</LastUserSel>
               <UsrMethodName>Deinit</UsrMethodName>
             </ItemState>
             <ItemState>
@@ -55146,7 +55157,7 @@
               <Index>0</Index>
               <Value>true</Value>
               <LastSelection>true</LastSelection>
-              <LastUserSel>yes</LastUserSel>
+              <LastUserSel>always</LastUserSel>
               <UsrMethodName>Init</UsrMethodName>
             </ItemState>
           </Methods>
@@ -55165,7 +55176,7 @@
               <Value>false</Value>
               <Expanded>false</Expanded>
               <LastSelection>false</LastSelection>
-              <LastUserSel>no</LastUserSel>
+              <LastUserSel>never</LastUserSel>
             </ItemState>
             <ItemState>
               <ItemSymbol>OnErrorName</ItemSymbol>
@@ -55270,8 +55281,8 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>false</Value>
-        <Expanded>false</Expanded>
+        <Value>true</Value>
+        <Expanded>true</Expanded>
       </ItemState>
       <ItemState>
         <ItemSymbol>USBInit</ItemSymbol>
@@ -55342,7 +55353,6 @@
               <ItemSymbol>IRC48_ClockGrp</ItemSymbol>
               <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
-              <ItemWasNeverEnabledInChgScript>true</ItemWasNeverEnabledInChgScript>
               <Expanded>true</Expanded>
             </ItemState>
             <ItemState>
@@ -55350,7 +55360,6 @@
               <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <ItemWasNeverEnabledInChgScript>true</ItemWasNeverEnabledInChgScript>
               <TypeSpecNameState>typeIRC48_EnDis</TypeSpecNameState>
               <Index>1</Index>
               <EnumSymbVal>disabled</EnumSymbVal>
@@ -55360,7 +55369,6 @@
               <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <ItemWasNeverEnabledInChgScript>true</ItemWasNeverEnabledInChgScript>
               <TypeSpecNameState>typeIRC48_RegulatorEnDis</TypeSpecNameState>
               <Index>0</Index>
               <EnumSymbVal>enabled</EnumSymbVal>
@@ -55370,7 +55378,6 @@
               <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <ItemWasNeverEnabledInChgScript>true</ItemWasNeverEnabledInChgScript>
               <TypeSpecNameState>typeIRC48_ClockRecoverEnDis</TypeSpecNameState>
               <Index>1</Index>
               <EnumSymbVal>disabled</EnumSymbVal>
@@ -55380,7 +55387,6 @@
               <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <ItemWasNeverEnabledInChgScript>true</ItemWasNeverEnabledInChgScript>
               <TypeSpecNameState>typeIRC48_ResetResumeRoughEnDis</TypeSpecNameState>
               <Index>1</Index>
               <EnumSymbVal>disabled</EnumSymbVal>
@@ -55390,7 +55396,6 @@
               <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <ItemWasNeverEnabledInChgScript>true</ItemWasNeverEnabledInChgScript>
               <TypeSpecNameState>typeIRC48_RestartIfrTrimEnDis</TypeSpecNameState>
               <Index>1</Index>
               <EnumSymbVal>disabled</EnumSymbVal>
@@ -55412,12 +55417,11 @@
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>0</Index>
-              <EnumSymbVal />
-              <Value />
+              <EnumSymbVal>pllfllClk</EnumSymbVal>
             </ItemState>
             <ItemState>
               <ItemSymbol>DividerInputFreq</ItemSymbol>
-              <Value>unknown</Value>
+              <Value>120 MHz</Value>
             </ItemState>
             <ItemState>
               <ItemSymbol>DividerClockFraction</ItemSymbol>
@@ -55443,18 +55447,17 @@
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
               <Index>0</Index>
-              <EnumSymbVal />
-              <Value />
+              <EnumSymbVal>dividedClk</EnumSymbVal>
             </ItemState>
             <ItemState>
               <ItemSymbol>ModuleClockFreq</ItemSymbol>
-              <Value>unknown</Value>
+              <Value>48 MHz</Value>
             </ItemState>
             <ItemState>
               <ItemSymbol>PullUpDownGrp</ItemSymbol>
               <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
-              <Expanded>true</Expanded>
+              <Expanded>false</Expanded>
             </ItemState>
             <ItemState>
               <ItemSymbol>WeakPullDowns</ItemSymbol>
@@ -56360,13 +56363,13 @@
               <ItemSymbol>BDTAddrObjectType</ItemSymbol>
               <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
-              <Value>extern uint8 g_Mem[];</Value>
+              <Value>extern uint8_t g_Mem[];</Value>
             </ItemState>
             <ItemState>
               <ItemSymbol>BDTAddrTxt</ItemSymbol>
               <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
-              <Value>((uint32)&amp;g_Mem[0])</Value>
+              <Value>((uint32_t)&amp;g_Mem[0])</Value>
             </ItemState>
             <ItemState>
               <ItemSymbol>SofTreshold</ItemSymbol>
@@ -56512,9 +56515,8 @@
               <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <Index>2</Index>
-              <EnumSymbVal />
-              <Value />
+              <Index>0</Index>
+              <EnumSymbVal>0</EnumSymbVal>
             </ItemState>
             <ItemState>
               <ItemSymbol>InterruptVector_OTG_ID_CHGPExPriorityFeatureGroup</ItemSymbol>
@@ -57499,7 +57501,7 @@
     <BeanType>Timeout</BeanType>
     <Name>TMOUT1</Name>
     <CompNumb>276</CompNumb>
-    <CompEnabled>false</CompEnabled>
+    <CompEnabled>true</CompEnabled>
     <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
     <IconName>Timeout</IconName>
     <UserFolderName />
@@ -57560,7 +57562,7 @@
     <Methods>
       <ItemState>
         <ItemSymbol>GetCounter</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
+        <ReadOnly>true</ReadOnly>
         <UserReadOnly>true</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <Index>0</Index>
@@ -57571,7 +57573,7 @@
       </ItemState>
       <ItemState>
         <ItemSymbol>LeaveCounter</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
+        <ReadOnly>true</ReadOnly>
         <UserReadOnly>true</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <Index>0</Index>
@@ -57604,7 +57606,7 @@
       </ItemState>
       <ItemState>
         <ItemSymbol>CounterExpired</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
+        <ReadOnly>true</ReadOnly>
         <UserReadOnly>true</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <Index>0</Index>
@@ -58934,6 +58936,150 @@
         <LastSelection>true</LastSelection>
         <LastUserSel>yes</LastUserSel>
         <UsrMethodName>ExitCritical</UsrMethodName>
+      </ItemState>
+    </Methods>
+    <Events />
+  </Bean>
+  <Bean>
+    <Repository>file:/${home_ProcessorExpert_loc}/MyComponents</Repository>
+    <BeanType>Timeout</BeanType>
+    <Name>TMOUT2</Name>
+    <CompNumb>347</CompNumb>
+    <CompEnabled>false</CompEnabled>
+    <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
+    <IconName>Timeout</IconName>
+    <UserFolderName>Referenced_Components</UserFolderName>
+    <Comment lines_count="0" />
+    <Template />
+    <BeanVersion>01.035</BeanVersion>
+    <LightErrorsIgnored>false</LightErrorsIgnored>
+    <Properties>
+      <ItemState>
+        <ItemSymbol>DeviceName</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>TMOUT2</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>sdk</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>KSDK1</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>CriticalSection</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>CS1</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>MaxTimeoutCounters</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>CounterTickPeriod</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>10</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>RTOSGroup</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>false</Value>
+        <Expanded>false</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>RTOS</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value />
+      </ItemState>
+    </Properties>
+    <Methods>
+      <ItemState>
+        <ItemSymbol>GetCounter</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <Value>true</Value>
+        <LastSelection>true</LastSelection>
+        <LastUserSel>yes</LastUserSel>
+        <UsrMethodName>GetCounter</UsrMethodName>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>LeaveCounter</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <Value>true</Value>
+        <LastSelection>true</LastSelection>
+        <LastUserSel>yes</LastUserSel>
+        <UsrMethodName>LeaveCounter</UsrMethodName>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Value</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <Value>true</Value>
+        <LastSelection>true</LastSelection>
+        <LastUserSel>yes</LastUserSel>
+        <UsrMethodName>Value</UsrMethodName>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SetCounter</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <Value>true</Value>
+        <LastSelection>true</LastSelection>
+        <LastUserSel>yes</LastUserSel>
+        <UsrMethodName>SetCounter</UsrMethodName>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>CounterExpired</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <Value>true</Value>
+        <LastSelection>true</LastSelection>
+        <LastUserSel>yes</LastUserSel>
+        <UsrMethodName>CounterExpired</UsrMethodName>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>AddTick</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <Value>true</Value>
+        <LastSelection>true</LastSelection>
+        <LastUserSel>yes</LastUserSel>
+        <UsrMethodName>AddTick</UsrMethodName>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Init</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <Value>true</Value>
+        <LastSelection>true</LastSelection>
+        <LastUserSel>yes</LastUserSel>
+        <UsrMethodName>Init</UsrMethodName>
       </ItemState>
     </Methods>
     <Events />
