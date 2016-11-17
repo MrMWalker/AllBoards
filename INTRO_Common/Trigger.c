@@ -89,7 +89,6 @@ void TRG_Init(void) {
     TRG_Triggers[i].callback = NULL;
     TRG_Triggers[i].data = NULL;
   }
-
 }
 
 #endif /* PL_CONFIG_HAS_TRIGGER */

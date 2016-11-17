@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="ilg.gnuarmeclipse.debug.gdbjtag.jlink.launchConfigurationType">
 <booleanAttribute key="ilg.gnuarmeclipse.debug.gdbjtag.jlink.doConnectToRunning" value="false"/>
-<booleanAttribute key="ilg.gnuarmeclipse.debug.gdbjtag.jlink.doContinue" value="false"/>
+<booleanAttribute key="ilg.gnuarmeclipse.debug.gdbjtag.jlink.doContinue" value="true"/>
 <booleanAttribute key="ilg.gnuarmeclipse.debug.gdbjtag.jlink.doDebugInRam" value="false"/>
 <booleanAttribute key="ilg.gnuarmeclipse.debug.gdbjtag.jlink.doFirstReset" value="true"/>
 <booleanAttribute key="ilg.gnuarmeclipse.debug.gdbjtag.jlink.doGdbServerAllocateConsole" value="true"/>
@@ -35,7 +35,7 @@
 <intAttribute key="ilg.gnuarmeclipse.debug.gdbjtag.jlink.gdbServerTelnetPortNumber" value="2333"/>
 <stringAttribute key="ilg.gnuarmeclipse.debug.gdbjtag.jlink.interfaceSpeed" value="auto"/>
 <stringAttribute key="ilg.gnuarmeclipse.debug.gdbjtag.jlink.otherInitCommands" value=""/>
-<stringAttribute key="ilg.gnuarmeclipse.debug.gdbjtag.jlink.otherRunCommands" value=""/>
+<stringAttribute key="ilg.gnuarmeclipse.debug.gdbjtag.jlink.otherRunCommands" value="monitor sleep 500"/>
 <stringAttribute key="ilg.gnuarmeclipse.debug.gdbjtag.jlink.secondResetType" value=""/>
 <intAttribute key="ilg.gnuarmeclipse.debug.gdbjtag.jlink.swoEnableTargetCpuFreq" value="0"/>
 <stringAttribute key="ilg.gnuarmeclipse.debug.gdbjtag.jlink.swoEnableTargetPortMask" value="0x1"/>

@@ -39,14 +39,11 @@
 #include "BitIoLdd2.h"
 #include "SW1.h"
 #include "BitIoLdd3.h"
-//#include "AS1.h"
-//#include "ASerialLdd3.h"
 #include "CLS1.h"
 #include "FRTOS1.h"
-#include "TI1.h"
-#include "TimerIntLdd1.h"
-#include "TU1.h"
+#include "RTOSCNTRLDD1.h"
 #include "RTT1.h"
+#include "SYS1.h"
 #include "LED_IR.h"
 #include "LEDpin3.h"
 #include "BitIoLdd5.h"
@@ -63,17 +60,39 @@
 #include "BitIoLdd10.h"
 #include "IR6.h"
 #include "BitIoLdd11.h"
+#include "Q4CLeft.h"
+#include "C12.h"
+#include "BitIoLdd16.h"
+#include "C23.h"
+#include "BitIoLdd17.h"
+#include "Q4CRight.h"
+#include "C13.h"
+#include "BitIoLdd18.h"
+#include "C25.h"
+#include "BitIoLdd19.h"
+#include "MOTTU.h"
+#include "DIRL.h"
+#include "BitIoLdd12.h"
+#include "DIRR.h"
+#include "BitIoLdd13.h"
+#include "QuadInt.h"
+#include "TimerIntLdd2.h"
+#include "TU_QuadInt.h"
+#include "TMOUT1.h"
 #include "USB1.h"
 #include "CDC1.h"
 #include "Tx1.h"
 #include "Rx1.h"
 #include "USB0.h"
+#include "IFsh1.h"
+#include "IntFlashLdd1.h"
+#include "PTRC1.h"
 #include "BUZ1.h"
 #include "BitIoLdd4.h"
-#include "TMOUT1.h"
 #include "WAIT1.h"
 #include "CS1.h"
 #include "HF1.h"
+#include "XF1.h"
 #include "KSDK1.h"
 #include "UTIL1.h"
 #include "KIN1.h"
@@ -172,6 +191,36 @@ void FRTOS1_vApplicationMallocFailedHook(void);
 **     Returns     : Nothing
 ** ===================================================================
 */
+
+void PTRC1_OnTraceWrap(void);
+/*
+** ===================================================================
+**     Event       :  PTRC1_OnTraceWrap (module Events)
+**
+**     Component   :  PTRC1 [PercepioTrace]
+**     Description :
+**         Called for trace ring buffer wrap around. This gives the
+**         application a chance to dump the trace buffer.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+
+/*
+** ===================================================================
+**     Event       :  QuadInt_OnInterrupt (module Events)
+**
+**     Component   :  QuadInt [TimerInt]
+**     Description :
+**         When a timer interrupt occurs this event is called (only
+**         when the component is enabled - <Enable> and the events are
+**         enabled - <EnableEvent>). This event is enabled only if a
+**         <interrupt service/event> is enabled.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void QuadInt_OnInterrupt(void);
 
 /* END Events */
 

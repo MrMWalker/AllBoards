@@ -13,10 +13,11 @@
 #include "WAIT1.h"
 #include "CS1.h"
 #include "Keys.h"
-#include "KIN1.h"
 #include "KeyDebounce.h"
+#include "KIN1.h"
 #if PL_CONFIG_HAS_SHELL
   #include "CLS1.h"
+  #include "Shell.h"
 #endif
 #if PL_CONFIG_HAS_BUZZER
   #include "Buzzer.h"
@@ -24,9 +25,6 @@
 #if PL_CONFIG_HAS_RTOS
   #include "FRTOS1.h"
   #include "RTOS.h"
-#endif
-#if PL_CONFIG_HAS_SHELL
-  #include "Shell.h"
 #endif
 #if PL_CONFIG_HAS_QUADRATURE
   #include "Q4CLeft.h"
@@ -48,6 +46,7 @@ void APP_EventHandler(EVNT_Handle event) {
     BUZ_PlayTune(BUZ_TUNE_WELCOME);
 #endif
     EVNT_SetEvent(EVNT_LED_OFF);
+    WAIT1_Waitms(500);
     break;
   case EVNT_LED_OFF:
     LED1_Off();
@@ -61,6 +60,7 @@ void APP_EventHandler(EVNT_Handle event) {
   case EVNT_SW1_PRESSED:
     LED1_Neg();
     //CLS1_SendStr("SW1 pressed\r\n", CLS1_GetStdio()->stdOut);
+    SHELL_SendString("SW1 pressed\r\n");
     #if PL_CONFIG_HAS_BUZZER
     BUZ_PlayTune(BUZ_TUNE_BUTTON);
     #endif
@@ -112,7 +112,7 @@ void APP_EventHandler(EVNT_Handle event) {
 #endif /* PL_CONFIG_HAS_EVENTS */
 
 static const KIN1_UID RoboIDs[] = {
-  /* 0: L20, V2 */ {{0x00,0x03,0x00,0x00,0x4E,0x45,0xB7,0x21,0x4E,0x45,0x32,0x15,0x30,0x02,0x00,0x13}},
+  /* 0: L20, V2 */ {{0x00,0x03,0x00,0x00,0x67,0xCD,0xB7,0x21,0x4E,0x45,0x32,0x15,0x30,0x02,0x00,0x13}},
   /* 1: L21, V2 */ {{0x00,0x05,0x00,0x00,0x4E,0x45,0xB7,0x21,0x4E,0x45,0x32,0x15,0x30,0x02,0x00,0x13}},
   /* 2: L4, V1  */ {{0x00,0x0B,0xFF,0xFF,0x4E,0x45,0xFF,0xFF,0x4E,0x45,0x27,0x99,0x10,0x02,0x00,0x24}}, /* revert right motor */
 };
@@ -183,17 +183,15 @@ void APP_Start(void) {
 #if PL_CONFIG_HAS_RTOS
   vTaskStartScheduler(); /* start the RTOS, create the IDLE task and run my tasks (if any) */
   /* does usually not return! */
-
-#if PL_CONFIG_HAS_TRIGGER
-
-#endif
+#else
+  //EVNT_SetEvent(EVNT_STARTUP);
   for(;;) {
 #if PL_CONFIG_HAS_KEYS
-	#if PL_CONFIG_HAS_DEBOUNCE
-	  KEYDBNC_Process();
-	#else
+  #if PL_CONFIG_HAS_DEBOUNCE
+    KEYDBNC_Process();
+  #else
     KEY_Scan();
-	#endif
+  #endif
 #endif
 #if PL_CONFIG_HAS_EVENTS
     EVNT_HandleEvent(APP_EventHandler, TRUE);
@@ -206,7 +204,7 @@ void APP_Start(void) {
     //LED1_Off();
     //LED2_Off();
     //WAIT1_Waitms(25); /* just wait for some arbitrary time .... */
-    CLS1_SendStr((uint8_t*)"hello world!\r\n", CLS1_GetStdio()->stdOut);
+    //CLS1_SendStr((uint8_t*)"hello world!\r\n", CLS1_GetStdio()->stdOut);
   }
 #endif
 }
