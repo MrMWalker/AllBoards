@@ -11,6 +11,7 @@
 #include "Shell.h"
 #include "CLS1.h"
 #include "Application.h"
+#include "LED.h"
 #if PL_CONFIG_HAS_RTOS
   #include "FRTOS1.h"
 #endif
@@ -100,7 +101,7 @@ typedef struct {
     CDC1_SendChar(ch); /* copy on CDC */
   #endif
   #if SHELL_CONFIG_HAS_SHELL_EXTRA_RTT
-    RTT1_SendChar(ch); /* copy on RTT */
+//    RTT1_SendChar(ch); /* copy on RTT */
   #endif
   }
 
@@ -153,6 +154,7 @@ static const CLS1_ParseCommandCallback CmdParserTable[] =
 {
   CLS1_ParseCommand, /* Processor Expert Shell component, is first in list */
   SHELL_ParseCommand, /* our own module parser */
+  LED_ParseCommand,
 #if FRTOS1_PARSE_COMMAND_ENABLED
   FRTOS1_ParseCommand, /* FreeRTOS shell parser */
 #endif

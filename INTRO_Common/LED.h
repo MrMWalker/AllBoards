@@ -43,7 +43,7 @@
   #define LED1_Close()    LED_Close(1)
 #else
   #define LED1_On()       /* empty */
-  #define LED1_Off()      /* empty */
+  #define LED1_On()       /* empty */
   #define LED1_Neg()      /* empty */
   #define LED1_Get()      /* empty */
   #define LED1_Put(val)   FALSE
@@ -85,6 +85,19 @@
   #define LED3_Put(val)   FALSE
   #define LED3_Open()     /* NYI */
   #define LED3_Close()    /* NYI */
+#endif
+
+#if PL_CONFIG_HAS_SHELL
+  #include "CLS1.h"
+
+/*!
+ * \brief Shell parser routine.
+ * \param cmd Pointer to command line string.
+ * \param handled Pointer to status if command has been handled. Set to TRUE if command was understood.
+ * \param io Pointer to stdio handle
+ * \return Error code, ERR_OK if everything was ok.
+ */
+  uint8_t LED_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_StdIOType *io);
 #endif
 
 void LED_Init(void); /* driver initialization */
