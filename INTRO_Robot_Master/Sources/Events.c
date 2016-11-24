@@ -206,7 +206,8 @@ void PTRC1_OnTraceWrap(void)
 */
 void QuadInt_OnInterrupt(void)
 {
-  /* Write your code here ... */
+	  Q4CLeft_Sample();
+	  Q4CRight_Sample();
 }
 
 /* END Events */

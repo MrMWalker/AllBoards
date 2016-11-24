@@ -20,7 +20,7 @@
 
 #define TACHO_SAMPLE_PERIOD_MS (1)
   /*!< \todo speed sample period in ms. Make sure that speed is sampled at the given rate. */
-#define NOF_HISTORY (16U+1U)
+#define NOF_HISTORY (32U+1U)
   /*!< number of samples for speed calculation (>0):the more, the better, but the slower. */
 
 /*! \todo Check types for position: code shall use the same type as the quadrature counter!!!!! */
