@@ -410,9 +410,9 @@ uint8_t PID_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_Std
   } else if (UTIL1_strncmp((char*)cmd, (char*)"pid speed R ", sizeof("pid speed R ")-1)==0) {
     res = ParsePidParameter(&speedRightConfig, cmd+sizeof("pid speed R ")-1, handled, io);
   } else if (UTIL1_strncmp((char*)cmd, (char*)"pid pos L ", sizeof("pid pos L ")-1)==0) {
-    res = ParsePidParameter(&speedLeftConfig, cmd+sizeof("pid pos L ")-1, handled, io);
+    res = ParsePidParameter(&posLeftConfig, cmd+sizeof("pid pos L ")-1, handled, io);
   } else if (UTIL1_strncmp((char*)cmd, (char*)"pid pos R ", sizeof("pid pos R ")-1)==0) {
-    res = ParsePidParameter(&speedRightConfig, cmd+sizeof("pid pos R ")-1, handled, io);
+    res = ParsePidParameter(&posRightConfig, cmd+sizeof("pid pos R ")-1, handled, io);
   } else if (UTIL1_strncmp((char*)cmd, (char*)"pid fw ", sizeof("pid fw ")-1)==0) {
     res = ParsePidParameter(&lineFwConfig, cmd+sizeof("pid fw ")-1, handled, io);
   }
@@ -442,32 +442,32 @@ void PID_Deinit(void) {
 void PID_Init(void) {
   /*! \todo determine your PID values */
   speedLeftConfig.pFactor100 = 2000;
-  speedLeftConfig.iFactor100 = 200;
-  speedLeftConfig.dFactor100 = 10;
-  speedLeftConfig.iAntiWindup = 10000;
+  speedLeftConfig.iFactor100 = 80;
+  speedLeftConfig.dFactor100 = 0;
+  speedLeftConfig.iAntiWindup = 120000;
   speedLeftConfig.lastError = 0;
   speedLeftConfig.integral = 0;
 
   speedRightConfig.pFactor100 = 2000;
-  speedRightConfig.iFactor100 = 200;
-  speedRightConfig.dFactor100 = 10;
-  speedRightConfig.iAntiWindup = 10000;
+  speedRightConfig.iFactor100 = 80;
+  speedRightConfig.dFactor100 = 0;
+  speedRightConfig.iAntiWindup = 120000;
   speedRightConfig.lastError = 0;
   speedRightConfig.integral = 0;
 
-  lineFwConfig.pFactor100 = 2000;
-  lineFwConfig.iFactor100 = 200;
-  lineFwConfig.dFactor100 = 10;
-  lineFwConfig.iAntiWindup = 10000;
-  lineFwConfig.maxSpeedPercent = 20;
+  lineFwConfig.pFactor100 = 1000;
+  lineFwConfig.iFactor100 = 15;
+  lineFwConfig.dFactor100 = 100;
+  lineFwConfig.iAntiWindup = 100000;
+  lineFwConfig.maxSpeedPercent = 30;
   lineFwConfig.lastError = 0;
   lineFwConfig.integral = 0;
 
-  posLeftConfig.pFactor100 = 2000;
-  posLeftConfig.iFactor100 = 200;
-  posLeftConfig.dFactor100 = 10;
-  posLeftConfig.iAntiWindup = 10000;
-  posLeftConfig.maxSpeedPercent = 20;
+  posLeftConfig.pFactor100 = 300;
+  posLeftConfig.iFactor100 = 2;
+  posLeftConfig.dFactor100 = 50;
+  posLeftConfig.iAntiWindup = 200;
+  posLeftConfig.maxSpeedPercent = 100;
   posLeftConfig.lastError = 0;
   posLeftConfig.integral = 0;
   posRightConfig.pFactor100 = posLeftConfig.pFactor100;
