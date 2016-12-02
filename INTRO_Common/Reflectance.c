@@ -178,7 +178,7 @@ static void REF_MeasureRaw(SensorTimeType raw[REF_NOF_SENSORS]) {
       }
     }
 
-  } while(cnt!=REF_NOF_SENSORS);
+  } while((cnt!=REF_NOF_SENSORS)&&(timerVal<=50000));
 
   CS1_ExitCritical();
 
