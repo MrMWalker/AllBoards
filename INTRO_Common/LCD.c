@@ -14,7 +14,7 @@
 #include "GFONT1.h"
 #include "FDisp1.h"
 #include "Application.h"
-#include "LED1.h"
+#include "LED.h"
 #include "UTIL1.h"
 #include "LCD_LED.h"
 #include "Event.h"
@@ -26,12 +26,15 @@
 static bool LedBackLightisOn = TRUE;
 static bool requestLCDUpdate = FALSE;
 
+#if PL_CONFIG_HAS_LCD_MENU
 typedef enum {
   LCD_MENU_ID_NONE = LCDMENU_ID_NONE, /* special value! */
   LCD_MENU_ID_MAIN,
     LCD_MENU_ID_BACKLIGHT,
 } LCD_MenuIDs;
+#endif
 
+#if PL_CONFIG_HAS_LCD_MENU
 static bool BackLightMenuHandler(const struct LCDMenu_MenuItem_ *item, LCDMenu_EventType event, void **dataP) {
   if (event==LCDMENU_EVENT_GET_TEXT && dataP!=NULL) {
     if (LedBackLightisOn) {
@@ -44,12 +47,16 @@ static bool BackLightMenuHandler(const struct LCDMenu_MenuItem_ *item, LCDMenu_E
   }
   return FALSE;
 }
+#endif
 
+#if PL_CONFIG_HAS_LCD_MENU
 static const LCDMenu_MenuItem menus[] =
 {/* id,                                     grp, pos,   up,                       down,                             text,           callback */
     {LCD_MENU_ID_MAIN,                        0,   0,   LCD_MENU_ID_NONE,         LCD_MENU_ID_BACKLIGHT,            "General",      NULL},
       {LCD_MENU_ID_BACKLIGHT,                 1,   0,   LCD_MENU_ID_MAIN,         LCD_MENU_ID_NONE,                 NULL,           BackLightMenuHandler},
 };
+
+#endif
 
 uint8_t LCD_HandleRemoteRxMessage(RAPP_MSG_Type type, uint8_t size, uint8_t *data, RNWK_ShortAddrType srcAddr, bool *handled, RPHY_PacketDesc *packet) {
   (void)size;
@@ -136,14 +143,17 @@ void LCD_Task(void *param) {
   (void)param; /* not used */
   ShowTextOnLCD("Press a key!");
   DrawText();
+#if PL_CONFIG_HAS_LCD_MENU
   LCDMenu_InitMenu(menus, sizeof(menus)/sizeof(menus[0]), 1);
   LCDMenu_OnEvent(LCDMENU_EVENT_DRAW);
+#endif
   for(;;) {
     if (LedBackLightisOn) {
       LCD_LED_On(); /* LCD backlight on */
     } else {
       LCD_LED_Off(); /* LCD backlight off */
     }
+#if PL_CONFIG_HAS_LCD_MENU
     if (requestLCDUpdate) {
       requestLCDUpdate = FALSE;
       LCDMenu_OnEvent(LCDMENU_EVENT_DRAW);
@@ -176,6 +186,7 @@ void LCD_Task(void *param) {
       LCDMenu_OnEvent(LCDMENU_EVENT_DOWN);
 //      ShowTextOnLCD("side down");
     }
+#endif
     vTaskDelay(pdMS_TO_TICKS(20));
   }
 }

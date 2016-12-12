@@ -37,6 +37,11 @@
 #if PL_CONFIG_BOARD_IS_ROBO_V2
   #include "PORT_PDD.h"
 #endif
+#if PL_CONFIG_HAS_LCD
+#include "LCD.h"
+#include "GDisp1.h"
+#include "PDC1.h"
+#endif
 
 #if PL_CONFIG_HAS_EVENTS
 void APP_EventHandler(EVNT_Handle event) {
@@ -60,8 +65,9 @@ void APP_EventHandler(EVNT_Handle event) {
   #if PL_CONFIG_NOF_KEYS>=1
   case EVNT_SW1_PRESSED:
     LED1_Neg();
-    //CLS1_SendStr("SW1 pressed\r\n", CLS1_GetStdio()->stdOut);
+    CLS1_SendStr("SW1 pressed\r\n", CLS1_GetStdio()->stdOut);
     SHELL_SendString("SW1 pressed\r\n");
+
     #if PL_CONFIG_HAS_BUZZER
     BUZ_PlayTune(BUZ_TUNE_BUTTON);
     LF_StartStopFollowing();
@@ -72,6 +78,11 @@ void APP_EventHandler(EVNT_Handle event) {
   case EVNT_SW2_PRESSED:
     SHELL_SendString("SW2 pressed\r\n");
     LED1_Neg();
+#if PL_CONFIG_HAS_LCD
+    GDisp1_Clear();
+    GDisp1_UpdateFull();
+    PDC1_WriteLineStr(1, "Button 2 pressed");
+#endif
     break;
   #endif
   #if PL_CONFIG_NOF_KEYS>=3

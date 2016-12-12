@@ -43,10 +43,11 @@ static uint8_t LED_PrintStatus(const CLS1_StdIOType *io) {
 	UTIL1_strcat(buf, sizeof(buf), "\r\n");
 	CLS1_SendStatusStr("  LED1", buf, io->stdOut);
 
+#if PL_CONFIG_NOF_LEDS >= 2
 	UTIL1_Num32sToStr(buf, sizeof(buf), LED2_Get());
 	UTIL1_strcat(buf, sizeof(buf), "\r\n");
 	CLS1_SendStatusStr("  LED2", buf, io->stdOut);
-
+#endif
 
 	return ERR_OK;
 }
