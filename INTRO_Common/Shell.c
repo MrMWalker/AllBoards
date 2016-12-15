@@ -84,7 +84,7 @@
 #define SHELL_CONFIG_HAS_SHELL_EXTRA_CDC   (1 && PL_CONFIG_HAS_USB_CDC)
 #define SHELL_CONFIG_HAS_SHELL_EXTRA_RTT   (1 && PL_CONFIG_HAS_SEGGER_RTT)
 #define SHELL_CONFIG_HAS_SHELL_EXTRA_BT    (0 && PL_CONFIG_HAS_BLUETOOTH)
-#define SHELL_CONFIG_HAS_SHELL_EXTRA_UART  (1)
+#define SHELL_CONFIG_HAS_SHELL_EXTRA_UART  (0)
 
 #if SHELL_HANDLER_ARRAY
 typedef struct {
@@ -92,6 +92,8 @@ typedef struct {
   unsigned char *buf;
   size_t bufSize;
 } SHELL_IODesc;
+
+
 
 #if CLS1_DEFAULT_SERIAL && (SHELL_CONFIG_HAS_SHELL_EXTRA_CDC || SHELL_CONFIG_HAS_SHELL_EXTRA_RTT)
   static void SHELL_SendChar(uint8_t ch) {
@@ -325,6 +327,18 @@ static void ShellTask(void *pvParameters) {
     }
 #endif /* PL_CONFIG_SQUEUE_SINGLE_CHAR */
 #endif /* PL_CONFIG_HAS_SHELL_QUEUE */
+
+#if CLS1_DEFAULT_SERIAL
+    CLS1_ConstStdIOTypePtr ioLocal = CLS1_GetStdio();
+#endif
+
+#if RNET_CONFIG_REMOTE_STDIO
+	static unsigned char radio_cmd_buf[48];
+	CLS1_ConstStdIOType *ioRemote = RSTDIO_GetStdioRx();
+	radio_cmd_buf[0] = '\0';
+    RSTDIO_Print(ioLocal); /* dispatch incoming messages and send them to local standard */
+    (void)CLS1_ReadAndParseWithCommandTable(radio_cmd_buf, sizeof(radio_cmd_buf), ioRemote, CmdParserTable);
+#endif
     FRTOS1_vTaskDelay(10/portTICK_PERIOD_MS);
   } /* for */
 }

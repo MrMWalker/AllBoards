@@ -45,6 +45,10 @@
 
 #if PL_CONFIG_HAS_EVENTS
 void APP_EventHandler(EVNT_Handle event) {
+#if PL_CONFIG_HAS_LCD
+	uint8_t val8 = 0;
+	RNWK_ShortAddrType APP_dstAddr = 0xFF;
+#endif
   switch(event) {
   case EVNT_STARTUP:
     LED1_On(); /* just do something */
@@ -67,7 +71,12 @@ void APP_EventHandler(EVNT_Handle event) {
     LED1_Neg();
     CLS1_SendStr("SW1 pressed\r\n", CLS1_GetStdio()->stdOut);
     SHELL_SendString("SW1 pressed\r\n");
-
+#if PL_CONFIG_HAS_LCD
+    GDisp1_Clear();
+    GDisp1_UpdateFull();
+    PDC1_WriteLineStr(1, "Right");
+    (void)RAPP_SendPayloadDataBlock(&val8, sizeof(val8), RAPP_MSG_TYPE_RIGHT, APP_dstAddr, RPHY_PACKET_FLAGS_NONE); /* only send low byte */
+#endif
     #if PL_CONFIG_HAS_BUZZER
     BUZ_PlayTune(BUZ_TUNE_BUTTON);
     LF_StartStopFollowing();
@@ -81,7 +90,8 @@ void APP_EventHandler(EVNT_Handle event) {
 #if PL_CONFIG_HAS_LCD
     GDisp1_Clear();
     GDisp1_UpdateFull();
-    PDC1_WriteLineStr(1, "Button 2 pressed");
+    PDC1_WriteLineStr(1, "Left");
+    (void)RAPP_SendPayloadDataBlock(&val8, sizeof(val8), RAPP_MSG_TYPE_LEFT, APP_dstAddr, RPHY_PACKET_FLAGS_NONE); /* only send low byte */
 #endif
     break;
   #endif
@@ -89,30 +99,59 @@ void APP_EventHandler(EVNT_Handle event) {
   case EVNT_SW3_PRESSED:
     SHELL_SendString("SW3 pressed\r\n");
     LED1_Neg();
+#if PL_CONFIG_HAS_LCD
+    GDisp1_Clear();
+    GDisp1_UpdateFull();
+    PDC1_WriteLineStr(1, "Backwards");
+    (void)RAPP_SendPayloadDataBlock(&val8, sizeof(val8), RAPP_MSG_TYPE_BACKWARD, APP_dstAddr, RPHY_PACKET_FLAGS_NONE); /* only send low byte */
+#endif
     break;
   #endif
   #if PL_CONFIG_NOF_KEYS>=4
   case EVNT_SW4_PRESSED:
     SHELL_SendString("SW4 pressed\r\n");
     LED1_Neg();
+#if PL_CONFIG_HAS_LCD
+    GDisp1_Clear();
+    GDisp1_UpdateFull();
+    PDC1_WriteLineStr(1, "Stop");
+    (void)RAPP_SendPayloadDataBlock(&val8, sizeof(val8), RAPP_MSG_TYPE_STOP, APP_dstAddr, RPHY_PACKET_FLAGS_NONE); /* only send low byte */
+#endif
     break;
   #endif
   #if PL_CONFIG_NOF_KEYS>=5
   case EVNT_SW5_PRESSED:
     SHELL_SendString("SW5 pressed\r\n");
     LED1_Neg();
+#if PL_CONFIG_HAS_LCD
+    GDisp1_Clear();
+    GDisp1_UpdateFull();
+    PDC1_WriteLineStr(1, "Forward");
+    (void)RAPP_SendPayloadDataBlock(&val8, sizeof(val8), RAPP_MSG_TYPE_FORWARD, APP_dstAddr, RPHY_PACKET_FLAGS_NONE); /* only send low byte */
+#endif
     break;
   #endif
   #if PL_CONFIG_NOF_KEYS>=6
   case EVNT_SW6_PRESSED:
     SHELL_SendString("SW6 pressed\r\n");
     LED1_Neg();
+#if PL_CONFIG_HAS_LCD
+    GDisp1_Clear();
+    GDisp1_UpdateFull();
+    PDC1_WriteLineStr(1, "B");
+#endif
     break;
   #endif
   #if PL_CONFIG_NOF_KEYS>=7
   case EVNT_SW7_PRESSED:
     SHELL_SendString("SW7 pressed\r\n");
     LED1_Neg();
+#if PL_CONFIG_HAS_LCD
+    GDisp1_Clear();
+    GDisp1_UpdateFull();
+    PDC1_WriteLineStr(1, "Line Follow");
+    (void)RAPP_SendPayloadDataBlock(&val8, sizeof(val8), RAPP_MSG_TYPE_LINEFOLLOW, APP_dstAddr, RPHY_PACKET_FLAGS_NONE); /* only send low byte */
+#endif
     break;
   #endif
 #endif /* PL_CONFIG_HAS_KEYS */

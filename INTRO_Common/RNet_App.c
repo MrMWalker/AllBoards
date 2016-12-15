@@ -25,6 +25,9 @@
 #if PL_CONFIG_HAS_REMOTE
   #include "Remote.h"
 #endif
+#if PL_CONFIG_HAS_MOTOR
+	#include "Drive.h"
+#endif
 
 static RNWK_ShortAddrType APP_dstAddr = RNWK_ADDR_BROADCAST; /* destination node address */
 
@@ -67,6 +70,32 @@ static uint8_t HandleDataRxMessage(RAPP_MSG_Type type, uint8_t size, uint8_t *da
       CLS1_SendStr(buf, io->stdOut);
 #endif /* PL_HAS_SHELL */      
       return ERR_OK;
+#if PL_CONFIG_HAS_MOTOR
+    case RAPP_MSG_TYPE_FORWARD:
+    	DRV_SetMode(DRV_MODE_SPEED);
+    	DRV_SetSpeed(4000,4000);
+    	break;
+    case RAPP_MSG_TYPE_STOP:
+        DRV_SetMode(DRV_MODE_SPEED);
+        DRV_SetSpeed(0,0);
+        break;
+    case RAPP_MSG_TYPE_LEFT:
+        DRV_SetMode(DRV_MODE_SPEED);
+        DRV_SetSpeed(2000,4000);
+        break;
+    case RAPP_MSG_TYPE_RIGHT:
+        DRV_SetMode(DRV_MODE_SPEED);
+        DRV_SetSpeed(4000,2000);
+        break;
+    case RAPP_MSG_TYPE_BACKWARD:
+        DRV_SetMode(DRV_MODE_SPEED);
+        DRV_SetSpeed(-2000,-2000);
+        break;
+    case RAPP_MSG_TYPE_LINEFOLLOW:
+    	DRV_SetMode(DRV_MODE_SPEED);
+    	LF_StartStopFollowing();
+
+#endif
     default: /*! \todo Handle your own messages here */
       break;
   } /* switch */
