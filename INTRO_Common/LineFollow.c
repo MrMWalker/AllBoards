@@ -8,19 +8,25 @@
 
 #include "Platform.h"
 #if PL_CONFIG_HAS_LINE_FOLLOW
-#include "LineFollow.h"
-#include "FRTOS1.h"
-#include "CLS1.h"
-#include "Shell.h"
-#include "Motor.h"
-#include "Reflectance.h"
-#if PL_CONFIG_HAS_TURN
-  #include "Turn.h"
+	#include "LineFollow.h"
+	#include "FRTOS1.h"
+	#include "CLS1.h"
+	#include "Shell.h"
+	#include "Motor.h"
+	#include "Reflectance.h"
+	#include "Turn.h"
 #endif
-#include "WAIT1.h"
-#include "Pid.h"
-#include "Drive.h"
-#include "Shell.h"
+#if PL_CONFIG_HAS_RADIO
+	#include "Radio.h"
+	#include "RNet_App.h"
+	#include "RNet_AppConfig.h"
+	#include "RApp.h"
+#endif
+#if PL_CONFIG_HAS_TURN
+	#include "WAIT1.h"
+	#include "Pid.h"
+	#include "Drive.h"
+	#include "Shell.h"
 #if PL_CONFIG_HAS_BUZZER
   #include "Buzzer.h"
 #endif
@@ -122,6 +128,11 @@ static void StateMachine(void) {
 
     case STATE_FINISHED:
       LF_StopFollowing();
+      //Send Signal C
+      uint8_t val8[2] = {0x06, 'C'};
+      RNWK_ShortAddrType APP_dstAddr = 0x12;
+      (void)RAPP_SendPayloadDataBlock(val8, sizeof(val8), RAPP_MSG_TYPE_LAP_POINT, APP_dstAddr, RPHY_PACKET_FLAGS_NONE); /* only send low byte */
+      APP_dstAddr = 0xFF;
       break;
     case STATE_STOP:
       SHELL_SendString("Stopped!\r\n");

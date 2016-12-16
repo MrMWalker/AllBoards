@@ -5,7 +5,7 @@
  *
  * This provides the main application entry point.
  */
-
+#include "Radio.h"
 #include "Platform.h"
 #include "Application.h"
 #include "Event.h"
@@ -46,7 +46,8 @@
 #if PL_CONFIG_HAS_EVENTS
 void APP_EventHandler(EVNT_Handle event) {
 #if PL_CONFIG_HAS_LCD
-	uint8_t val8 = 0;
+	uint8_t val8[2] = {0, 0};
+	uint8_t payload = 0;
 	RNWK_ShortAddrType APP_dstAddr = 0xFF;
 #endif
   switch(event) {
@@ -75,7 +76,7 @@ void APP_EventHandler(EVNT_Handle event) {
     GDisp1_Clear();
     GDisp1_UpdateFull();
     PDC1_WriteLineStr(1, "Right");
-    (void)RAPP_SendPayloadDataBlock(&val8, sizeof(val8), RAPP_MSG_TYPE_RIGHT, APP_dstAddr, RPHY_PACKET_FLAGS_NONE); /* only send low byte */
+    (void)RAPP_SendPayloadDataBlock(&payload, sizeof(payload), RAPP_MSG_TYPE_RIGHT, APP_dstAddr, RPHY_PACKET_FLAGS_NONE); /* only send low byte */
 #endif
     #if PL_CONFIG_HAS_BUZZER
     BUZ_PlayTune(BUZ_TUNE_BUTTON);
@@ -91,7 +92,7 @@ void APP_EventHandler(EVNT_Handle event) {
     GDisp1_Clear();
     GDisp1_UpdateFull();
     PDC1_WriteLineStr(1, "Left");
-    (void)RAPP_SendPayloadDataBlock(&val8, sizeof(val8), RAPP_MSG_TYPE_LEFT, APP_dstAddr, RPHY_PACKET_FLAGS_NONE); /* only send low byte */
+    (void)RAPP_SendPayloadDataBlock(&payload, sizeof(payload), RAPP_MSG_TYPE_LEFT, APP_dstAddr, RPHY_PACKET_FLAGS_NONE); /* only send low byte */
 #endif
     break;
   #endif
@@ -103,7 +104,7 @@ void APP_EventHandler(EVNT_Handle event) {
     GDisp1_Clear();
     GDisp1_UpdateFull();
     PDC1_WriteLineStr(1, "Backwards");
-    (void)RAPP_SendPayloadDataBlock(&val8, sizeof(val8), RAPP_MSG_TYPE_BACKWARD, APP_dstAddr, RPHY_PACKET_FLAGS_NONE); /* only send low byte */
+    (void)RAPP_SendPayloadDataBlock(&payload, sizeof(payload), RAPP_MSG_TYPE_BACKWARD, APP_dstAddr, RPHY_PACKET_FLAGS_NONE); /* only send low byte */
 #endif
     break;
   #endif
@@ -115,7 +116,15 @@ void APP_EventHandler(EVNT_Handle event) {
     GDisp1_Clear();
     GDisp1_UpdateFull();
     PDC1_WriteLineStr(1, "Stop");
-    (void)RAPP_SendPayloadDataBlock(&val8, sizeof(val8), RAPP_MSG_TYPE_STOP, APP_dstAddr, RPHY_PACKET_FLAGS_NONE); /* only send low byte */
+    (void)RAPP_SendPayloadDataBlock(&payload, sizeof(payload), RAPP_MSG_TYPE_STOP, APP_dstAddr, RPHY_PACKET_FLAGS_NONE); /* only send low byte */
+    APP_dstAddr = 0x12;
+
+    //Send Signal Test
+	val8[0] = 0x06;
+	val8[1] = 'T';
+	//RADIO_SetChannel(6);
+	(void)RAPP_SendPayloadDataBlock(val8, sizeof(val8), RAPP_MSG_TYPE_LAP_POINT, APP_dstAddr, RPHY_PACKET_FLAGS_NONE); /* only send low byte */
+	APP_dstAddr = 0xFF;
 #endif
     break;
   #endif
@@ -127,7 +136,7 @@ void APP_EventHandler(EVNT_Handle event) {
     GDisp1_Clear();
     GDisp1_UpdateFull();
     PDC1_WriteLineStr(1, "Forward");
-    (void)RAPP_SendPayloadDataBlock(&val8, sizeof(val8), RAPP_MSG_TYPE_FORWARD, APP_dstAddr, RPHY_PACKET_FLAGS_NONE); /* only send low byte */
+    (void)RAPP_SendPayloadDataBlock(&payload, sizeof(payload), RAPP_MSG_TYPE_FORWARD, APP_dstAddr, RPHY_PACKET_FLAGS_NONE); /* only send low byte */
 #endif
     break;
   #endif
@@ -138,7 +147,13 @@ void APP_EventHandler(EVNT_Handle event) {
 #if PL_CONFIG_HAS_LCD
     GDisp1_Clear();
     GDisp1_UpdateFull();
-    PDC1_WriteLineStr(1, "B");
+    PDC1_WriteLineStr(1, "Signal A");
+    APP_dstAddr = 0x12;
+    val8[0] = 0x06;
+    val8[1] = 'A';
+    //RADIO_SetChannel(6);
+    (void)RAPP_SendPayloadDataBlock(val8, sizeof(val8), RAPP_MSG_TYPE_LAP_POINT, APP_dstAddr, RPHY_PACKET_FLAGS_NONE); /* only send low byte */
+    APP_dstAddr = 0xFF;
 #endif
     break;
   #endif
@@ -150,7 +165,15 @@ void APP_EventHandler(EVNT_Handle event) {
     GDisp1_Clear();
     GDisp1_UpdateFull();
     PDC1_WriteLineStr(1, "Line Follow");
-    (void)RAPP_SendPayloadDataBlock(&val8, sizeof(val8), RAPP_MSG_TYPE_LINEFOLLOW, APP_dstAddr, RPHY_PACKET_FLAGS_NONE); /* only send low byte */
+    (void)RAPP_SendPayloadDataBlock(&payload, sizeof(payload), RAPP_MSG_TYPE_LINEFOLLOW, APP_dstAddr, RPHY_PACKET_FLAGS_NONE); /* only send low byte */
+
+    //Send Signal B
+    APP_dstAddr = 0x12;
+	val8[0] = 0x06;
+	val8[1] = 'B';
+	//RADIO_SetChannel(6);
+	(void)RAPP_SendPayloadDataBlock(val8, sizeof(val8), RAPP_MSG_TYPE_LAP_POINT, APP_dstAddr, RPHY_PACKET_FLAGS_NONE); /* only send low byte */
+	APP_dstAddr = 0xFF;
 #endif
     break;
   #endif
