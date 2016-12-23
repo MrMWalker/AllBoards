@@ -28,6 +28,9 @@
 #if PL_CONFIG_HAS_MOTOR
 	#include "Drive.h"
 #endif
+#if PL_CONFIG_HAS_MOTOR
+#include "LineFollow.h"
+#endif
 
 static RNWK_ShortAddrType APP_dstAddr = RNWK_ADDR_BROADCAST; /* destination node address */
 
@@ -73,7 +76,7 @@ static uint8_t HandleDataRxMessage(RAPP_MSG_Type type, uint8_t size, uint8_t *da
 #if PL_CONFIG_HAS_MOTOR
     case RAPP_MSG_TYPE_FORWARD:
     	DRV_SetMode(DRV_MODE_SPEED);
-    	DRV_SetSpeed(4000,4000);
+    	DRV_SetSpeed(3000,3000);
     	break;
     case RAPP_MSG_TYPE_STOP:
         DRV_SetMode(DRV_MODE_SPEED);
